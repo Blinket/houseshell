@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -104,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HouseShell\HouseShell.csproj">
-      <Project>{1FE2906A-3AF3-4AE5-92D6-4213F91F64FF}</Project>
+      <Project>{BB150B0D-D202-4605-AF8C-1C239133D5F0}</Project>
       <Name>HouseShell</Name>
     </ProjectReference>
   </ItemGroup>

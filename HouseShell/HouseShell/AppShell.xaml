@@ -6,6 +6,7 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:HouseShell.Views"
        xmlns:icons="clr-namespace:HouseShell.Images"
+       FlyoutBehavior="Flyout"
        Title="HouseShell"
        x:Class="HouseShell.AppShell">
 
@@ -74,25 +75,34 @@
 
 
     <!-- Your Pages -->
-    <TabBar>
-        <Tab Title="Browse" 
-             Route="houses">
-            <Tab.Icon>
-                <FontImageSource
-                    FontFamily="{DynamicResource MaterialFontFamily}"
-                    Glyph="{x:Static icons:MaterialDesignIconFont.HomeGroup}"/>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:HousesPage}" />
-        </Tab>
-        <Tab Title="About">
-            <Tab.Icon>
-                <FontImageSource
-                    FontFamily="{DynamicResource MaterialFontFamily}"
-                    Glyph="{x:Static icons:MaterialDesignIconFont.InformationOutline}"/>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
-        </Tab>
-    </TabBar>
+
+    <FlyoutItem Route="houseshell"
+                Title="Services">
+        <FlyoutItem.FlyoutIcon>
+            <FontImageSource Color="Black"
+                             FontFamily="{DynamicResource MaterialFontFamily}"
+                             Glyph="{x:Static icons:MaterialDesignIconFont.FacebookWorkplace}"/>
+        </FlyoutItem.FlyoutIcon>
+            <Tab Title="Browse" 
+                    Route="houses">
+                <Tab.Icon>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{x:Static icons:MaterialDesignIconFont.HomeGroup}"/>
+                </Tab.Icon>
+                <ShellContent ContentTemplate="{DataTemplate local:HousesPage}" />
+            </Tab>
+            <Tab Title="About">
+                <Tab.Icon>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{x:Static icons:MaterialDesignIconFont.InformationOutline}"/>
+                </Tab.Icon>
+                <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+            </Tab>
+    </FlyoutItem>
+
+
 
     <MenuItem Clicked="RateApp_Click"
               Text="Rate this app">

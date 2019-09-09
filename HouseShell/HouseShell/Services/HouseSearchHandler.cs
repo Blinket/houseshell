@@ -38,9 +38,7 @@ namespace HouseShell.Services
 
             // work around for bug 5713 on iOS
             // https://github.com/xamarin/Xamarin.Forms/issues/5713
-#if __IOS__
             await Task.Delay(400);
-#endif
             // Note: strings will be URL encoded for navigation (e.g. "Blue Monkey" becomes "Blue%20Monkey"). Therefore, decode at the receiver.
             await Shell.Current.GoToAsync($"//houses/house?id={((House)item).ID}", true);
         }
