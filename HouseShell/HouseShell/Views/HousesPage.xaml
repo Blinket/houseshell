@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helpers="clr-namespace:HouseShell.Helpers"
+             xmlns:services="clr-namespace:HouseShell.Services"
+             mc:Ignorable="d"
+             Title="{Binding Title}"
+             x:Class="HouseShell.Views.HousesPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:ImageResourceConverter x:Key="imageResourceCvt" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.SearchHandler>
+        <services:HouseSearchHandler Placeholder="Search on house type or address"
+                                     ShowsResults="True"
+                                     DisplayMemberName="Address1">
+        </services:HouseSearchHandler>
+    </Shell.SearchHandler>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Houses}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      SeparatorVisibility="None"
+                      CachingStrategy="RecycleElement"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="true"
+                      ItemSelected="OnItemSelected"
+                      BackgroundColor="#e8eaed"
+                      RefreshCommand="{Binding LoadHouseCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10" Padding="10" Margin="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" 
+                                           HeightRequest="100" 
+                                           Aspect="AspectFill"
+                                           Source="{Binding ImageUrl, Converter={StaticResource imageResourceCvt}}" />
+                                    <StackLayout Grid.Column="1" Padding="0">
+                                        <Label Text="Address" FontSize="Small" Margin="0,0,0,-6" FontAttributes="Italic"/>
+                                        <Label Text="{Binding Address1}" />
+                                        <Label Text="Listing agent:" FontSize="Small" Margin="0,0,0,-6" FontAttributes="Italic"/>
+                                        <Label Text="{Binding ListedBy}" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

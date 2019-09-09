@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\cape01.jpg" />
+    <None Remove="Images\cape02.jpg" />
+    <None Remove="Images\cape03.jpg" />
+    <None Remove="Images\colonial01.jpg" />
+    <None Remove="Images\colonial02.jpg" />
+    <None Remove="Images\cottage1.jpg" />
+    <None Remove="Images\materialdesignicons-webfont.ttf" />
+    <None Remove="Images\ranch01.jpg" />
+    <None Remove="Images\ranch02.jpg" />
+    <None Remove="Images\ranch03.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\cape01.jpg" />
+    <EmbeddedResource Include="Images\cape02.jpg" />
+    <EmbeddedResource Include="Images\cape03.jpg" />
+    <EmbeddedResource Include="Images\colonial01.jpg" />
+    <EmbeddedResource Include="Images\colonial02.jpg" />
+    <EmbeddedResource Include="Images\cottage1.jpg" />
+    <EmbeddedResource Include="Images\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="Images\ranch01.jpg" />
+    <EmbeddedResource Include="Images\ranch02.jpg" />
+    <EmbeddedResource Include="Images\ranch03.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Plugin.StoreReview" Version="2.0.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\HouseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HousesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

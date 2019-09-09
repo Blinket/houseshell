@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:HouseShell.Views"
+       xmlns:icons="clr-namespace:HouseShell.Images"
+       Title="HouseShell"
+       x:Class="HouseShell.AppShell">
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="50" RowSpacing="0" BackgroundColor="#4f1f1d">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"
+                   Aspect="AspectFit"
+                   HeightRequest="100"
+                   HorizontalOptions="Center">
+                <Image.Source>
+                    <FontImageSource
+                        Color="White"
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{x:Static icons:MaterialDesignIconFont.Home}"/>
+                </Image.Source>
+            </Image>
+            <StackLayout Grid.Column="0" Grid.ColumnSpan="2">
+                <Label Text="M L S" HorizontalTextAlignment="Center" FontSize="22" VerticalTextAlignment="Center" TextColor="White" Margin="0,0,0,-10"/>
+                <Label Text="Browser" HorizontalTextAlignment="Center" FontSize="16" TextColor="White"/>
+            </StackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+
+    <!-- Your Pages -->
+    <TabBar>
+        <Tab Title="Browse" 
+             Route="houses">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static icons:MaterialDesignIconFont.HomeGroup}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HousesPage}" />
+        </Tab>
+        <Tab Title="About">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFontFamily}"
+                    Glyph="{x:Static icons:MaterialDesignIconFont.InformationOutline}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>
+
+    <MenuItem Clicked="RateApp_Click"
+              Text="Rate this app">
+        <MenuItem.IconImageSource>
+            <FontImageSource
+                Color="Black"
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static icons:MaterialDesignIconFont.Star}"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+    <MenuItem Clicked="Help_Click"
+              Text="Help">
+        <MenuItem.IconImageSource>
+            <FontImageSource
+                Color="Black"
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static icons:MaterialDesignIconFont.HelpCircleOutline}"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+    <MenuItem Clicked="Privacy_Click"
+              Text="Privacy policy">
+        <MenuItem.IconImageSource>
+            <FontImageSource
+                Color="Black"
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static icons:MaterialDesignIconFont.ShieldAccountOutline}"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+    <MenuItem Clicked="Tos_Click"
+              Text="Terms of Use">
+        <MenuItem.IconImageSource>
+            <FontImageSource
+                Color="Black"
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static icons:MaterialDesignIconFont.FileDocumentBoxCheckOutline}"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+
+
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+	<DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>

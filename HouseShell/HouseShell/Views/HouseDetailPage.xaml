@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helpers="clr-namespace:HouseShell.Helpers"
+             mc:Ignorable="d"
+             Title="{Binding Title}"
+             x:Class="HouseShell.Views.HouseDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:ImageResourceConverter x:Key="imageResourceCvt" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image HeightRequest="200" Aspect="AspectFill" Margin="0,50,0,0"
+                   Source="{Binding House.ImageUrl, Converter={StaticResource imageResourceCvt}}" />
+            <Label Text="Address:"/>
+            <Label Text="{Binding House.Address1}"/>
+            <Label Text="{Binding House.City}"/>
+            <Label Text="House Style:"/>
+            <Label Text="{Binding House.HouseType}"/>
+            <Label Text="Represented by:"/>
+            <Label Text="{Binding House.ListedBy}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
